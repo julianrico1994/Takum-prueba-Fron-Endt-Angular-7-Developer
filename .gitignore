@@ -1,0 +1,22 @@
+
+**/.vscode/
+#Python, Python files to be ignored
+**/__pycache__
+**/migrations/*
+!**/migrations/__init__.py
+!**/__init__.py
+
+#Node, React files to be ignored
+
+**/node_modules
+**/dist
+**/.idea
+**/npm-debug.log
+
+#Others git ignore for Node and React
+
+# testing
+**/coverage
+
+# production
+**/build
