@@ -9,18 +9,29 @@ import { Location } from '@angular/common';
   styleUrls: ['./modal.component.scss']
 })
 export class ModalComponent implements OnInit {
+  constructor(
+    public dataApiService: DataApiService,
+    private location: Location
+  ) {}
 
-  constructor(private dataApiService: DataApiService, private location: Location) { }
+  ngOnInit() {}
 
-  ngOnInit() { }
+  toJSON() {
+    console.log(JSON.stringify(this.dataApiService, null, 2));
+  }
 
-  onSaveBook(bookForm: NgForm): void {
-    if (bookForm.value.bookId == null) {
+  onSaveProduct(productForm: NgForm): void {
+    console.log(productId);
+    if (productForm.value.productId == null) {
       // NEW
-      this.dataApiService.saveBook(bookForm.value).subscribe(book => location.reload());
+      this.dataApiService
+        .saveProduct(productForm.value)
+        .subscribe(product => location.reload());
     } else {
       // update
-      this.dataApiService.updateBook(bookForm.value).subscribe(book => location.reload());
+      this.dataApiService
+        .updateProduct(productForm.value)
+        .subscribe(product => location.reload());
     }
   }
 }

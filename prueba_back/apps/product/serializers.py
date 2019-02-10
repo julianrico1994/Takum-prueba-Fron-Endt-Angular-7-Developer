@@ -10,10 +10,12 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'description', 'cost', 'category', 'user', 'deleted_at')
 
 
-class ProductSerializerNested(serializers.Serializer):
-    id = serializers.IntegerField()
-    name = serializers.CharField(max_length=50)
-    description = serializers.CharField(max_length=50)
-    cost = serializers.CharField(max_length=50)
-    category = CategorySerializer()
+class ProductSerializerNested(serializers.ModelSerializer):
+    """
+    Serializing the Product instances into representations.
+    """
     user = UserSerializerBasic()
+
+    class Meta:
+        model = Product
+        fields = ('id', 'name', 'description', 'cost', 'category', 'user', 'deleted_at')

@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core'
-import { HttpClient, HttpHandler } from '@angular/common/http'
-import { Observable } from 'rxjs/internal/Observable'
-import { map } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -10,58 +9,53 @@ import { AuthService } from './auth.service';
 export class DataApiService {
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  products: Observable<any>;
-  product: Observable<any>;
-
   public selectedProduct = {
     id: null,
-    titulo: '',
-    idioma: '',
-    descripcion: '',
-    portada: '',
-    precio: '',
-    link_amazon: '',
-    autor: '',
-    oferta: ''
+    name: '',
+    description: '',
+    cost: '',
+    category: '',
+    user: ''
   };
 
   getAllProducts() {
-    const url_api = `http://127.0.0.1:8000/product/list`;
-    return this.http.get(url_api);
+    const URL_API = `http://127.0.0.1:8000/product/list`;
+    return this.http.get(URL_API);
   }
 
   getAllProductsUser() {
     const user = this.authService.getToken();
-    console.log(`user: ${user}`)
-    const url_api = `http://127.0.0.1:8000/product/listGroupByCategoryByUser/${user}`;
-    return this.http.get(url_api);
+    console.log(`user: ${user}`);
+    const URL_API = `http://127.0.0.1:8000/product/listGroupByCategoryByUser/${user}`;
+    return this.http.get(URL_API);
   }
 
-  saveBook(book) {
+  saveProduct(product) {
     // TODO: obtener token
     // TODO: not null
-    const token = this.authService.getToken();
-    const url_api = `http://localhost:3000/api/books?access_token=${token}`;
+    // const token = this.authService.getToken();
+    const URL_API = `http://127.0.0.1:8000/product/create`;
     return this.http
-      .post(url_api, book)
+      .post(URL_API, product)
       .pipe(map(data => data));
   }
 
-  updateBook(book) {
+  updateProduct(product) {
+    console.log(product);
     // TODO: obtener token
     // TODO: not null
-    const bookId = book.bookId;
-    const token = this.authService.getToken();
-    const url_api = `http://localhost:3000/api/books/${bookId}/?access_token=${token}`;
+    // const productId = product.productId;
+    // const token = this.authService.getToken();
+    const URL_API = `http://127.0.0.1:8000/product/update/${product.productId}`;
     return this.http
-      .put(url_api, book)
+      .put(URL_API, product)
       .pipe(map(data => data));
   }
 
   deleteProduct(id: string) {
-    const url_api = `http://127.0.0.1:8000/product/softDelete`;
+    const URL_API = `http://127.0.0.1:8000/product/softDelete`;
     return this.http
-      .put(url_api, { id })
+      .put(URL_API, { id })
       .pipe(map(data => data));
   }
 

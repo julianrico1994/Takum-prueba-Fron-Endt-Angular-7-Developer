@@ -16,7 +16,7 @@
             "name": "andres",
             "email": "andres@gmail.com",
             "password": "123",
-            "profile": "INVITADO"
+            "profile": "INVITED"
         }
     },
     {
@@ -56,21 +56,21 @@
         "model": "category.category",
         "pk": 1,
         "fields": {
-            "name": "grande"
+            "name": "large"
         }
     },
     {
         "model": "category.category",
         "pk": 2,
         "fields": {
-            "name": "mediano"
+            "name": "medium"
         }
     },
     {
         "model": "category.category",
         "pk": 3,
         "fields": {
-            "name": "peque\u00f1o"
+            "name": "small"
         }
     }
 ]

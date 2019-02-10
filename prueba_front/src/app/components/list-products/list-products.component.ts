@@ -9,9 +9,10 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./list-products.component.scss']
 })
 export class ListProductsComponent implements OnInit {
-  constructor(private dataApiService: DataApiService) { }
-  private products: ProductInterface;
-  pageActual: number = 1;
+  constructor(private dataApiService: DataApiService) {}
+  // public products: ProductInterface;
+  public products;
+  // pageActual: number = 1;
 
   ngOnInit() {
     this.getListProducts();
@@ -20,7 +21,9 @@ export class ListProductsComponent implements OnInit {
   getListProducts(): void {
     this.dataApiService
       .getAllProductsUser()
-      .subscribe((products) => (this.products = products, console.log(products)));
+      .subscribe(
+        products => ((this.products = products), console.log(products))
+      );
   }
 
   onDeleteProduct(id: string): void {
@@ -29,22 +32,19 @@ export class ListProductsComponent implements OnInit {
     }
   }
 
-  onPreUpdateBook(product): void {
+  onPreUpdateProduct(product): void {
     // this.dataApiService.selectedProduct = Object.assign({}, product);
+    this.dataApiService.selectedProduct = { ...product };
   }
 
-  resetForm(bookForm?: NgForm): void {
-    // this.dataApiService.selectedProduct = {
-    //   id: null,
-    //   titulo: '',
-    //   idioma: '',
-    //   descripcion: '',
-    //   portada: '',
-    //   precio: '',
-    //   link_amazon: '',
-    //   autor: '',
-    //   oferta: ''
-    // };
+  resetForm(): void {
+    this.dataApiService.selectedProduct = {
+      id: null,
+      name: '',
+      description: '',
+      cost: '',
+      category: '',
+      user: ''
+    };
   }
-
 }
