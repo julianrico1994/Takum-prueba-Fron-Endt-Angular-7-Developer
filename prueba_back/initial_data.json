@@ -1,0 +1,76 @@
+[
+    {
+        "model": "user.user",
+        "pk": 1,
+        "fields": {
+            "name": "julian",
+            "email": "julian@gmail.com",
+            "password": "123",
+            "profile": "TAKUM"
+        }
+    },
+    {
+        "model": "user.user",
+        "pk": 2,
+        "fields": {
+            "name": "andres",
+            "email": "andres@gmail.com",
+            "password": "123",
+            "profile": "INVITADO"
+        }
+    },
+    {
+        "model": "product.product",
+        "pk": 1,
+        "fields": {
+            "name": "pelcuhe",
+            "description": "descripci\u00f3n de un peluche ...",
+            "cost": "50",
+            "category": 1,
+            "user": 1
+        }
+    },
+    {
+        "model": "product.product",
+        "pk": 2,
+        "fields": {
+            "name": "carro",
+            "description": "descripci\u00f3n de un peluche ...",
+            "cost": "100",
+            "category": 1,
+            "user": 2
+        }
+    },
+    {
+        "model": "product.product",
+        "pk": 3,
+        "fields": {
+            "name": "avi\u00f3n",
+            "description": "descripci\u00f3n de un av\u00edon...",
+            "cost": "150",
+            "category": 2,
+            "user": 1
+        }
+    },
+    {
+        "model": "category.category",
+        "pk": 1,
+        "fields": {
+            "name": "grande"
+        }
+    },
+    {
+        "model": "category.category",
+        "pk": 2,
+        "fields": {
+            "name": "mediano"
+        }
+    },
+    {
+        "model": "category.category",
+        "pk": 3,
+        "fields": {
+            "name": "peque\u00f1o"
+        }
+    }
+]

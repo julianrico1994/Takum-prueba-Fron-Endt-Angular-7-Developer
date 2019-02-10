@@ -23,7 +23,10 @@ class Auth(generics.ListAPIView):
         password = dataPost['password']
 
         queryset = User.objects.filter(email=email).filter(password=password)
-        if queryset.count == 0:
-            Response({'succes': False})
-        serializer = UserSerializer(queryset[0], many=False)
-        return Response(serializer.data)
+        print('queryset.count: ' + str(len(queryset)))
+        if len(queryset) == 0:
+            return Response({'succes': False})
+
+        data = UserSerializer(queryset[0], many=False).data
+        data['succes'] = True
+        return Response(data)

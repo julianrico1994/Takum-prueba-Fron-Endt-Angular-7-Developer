@@ -3,7 +3,7 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from .models import Product
-from .serializers import ProductSerializer
+from .serializers import ProductSerializer, ProductSerializerNested
 from apps.category.models import Category
 
 
@@ -28,13 +28,16 @@ class ListGroupByCategoryByUser(generics.ListAPIView):
 
     def get(self, request, *args, **kwargs):
         user = self.kwargs['user']
-        response = []
-        querysetCategory = Category.objects.all()
-        for category in querysetCategory:
-            querysetProducts = Product.objects.filter(category=category).filter(user=user)
-            serializerProduct = ProductSerializer(querysetProducts, many=True)
-            response.append({
-                'name': category.name,
-                'products': serializerProduct.data
-            })
-        return Response(response)
+        queryset = Product.objects.filter(user=user, deleted_at=None).order_by('category')
+        serializer = ProductSerializerNested(queryset, many=True)
+        return Response(serializer.data)
+
+
+class soft_delete(generics.ListAPIView):
+    permission_classes = (AllowAny,)
+
+    def put(self, request):
+        dataPost = request.data
+        queryset = Product.soft_delete(dataPost['id'])
+        serializer = ProductSerializer(queryset, many=False)
+        return Response(serializer.data)
