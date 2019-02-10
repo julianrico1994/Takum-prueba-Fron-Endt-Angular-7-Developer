@@ -21,7 +21,6 @@ export class ModalComponent implements OnInit {
   }
 
   onSaveProduct(productForm: NgForm): void {
-    console.log(productId);
     if (productForm.value.productId == null) {
       // NEW
       this.dataApiService

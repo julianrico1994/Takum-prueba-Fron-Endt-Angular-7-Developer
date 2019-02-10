@@ -79,9 +79,12 @@
                 class="form-control"
                 [(ngModel)]="this.dataApiService.selectedProduct.category"
               >
-                <option value="1">large</option>
-                <option value="2">medium</option>
-                <option value="3">small</option>
+                <option
+                  *ngFor="let category of this.dataApiService.categories"
+                  value={{category.id}}
+                >
+                  {{ category.name }}
+                </option>
               </select>
             </div>
           </div>
@@ -109,7 +112,7 @@
     </div>
   </div>
 
-  <pre>
+  <!-- <pre>
     {{ this.dataApiService.selectedProduct | json }}
-  </pre>
+  </pre> -->
 </div>

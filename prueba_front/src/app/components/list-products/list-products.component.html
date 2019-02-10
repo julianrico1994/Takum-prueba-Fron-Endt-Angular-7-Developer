@@ -24,7 +24,13 @@
       <tbody>
         <tr *ngFor="let product of products; index as i">
           <th scope="row">{{ i + 1 }}</th>
-          <td>{{ product.category }}</td>
+          <td>
+            {{
+              this.dataApiService.categories
+                ? this.categoryFilter(product.category)
+                : product.category
+            }}
+          </td>
           <td>{{ product.name }}</td>
           <td>{{ product.description }}</td>
           <td>{{ product.cost }}$</td>
