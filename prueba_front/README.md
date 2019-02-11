@@ -1,4 +1,4 @@
-# Prueba Takúm by Julian Garcia Rico ('Front-End' proyect)
+# Front:  Takúm's test by Julian Garcia Rico
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
 
