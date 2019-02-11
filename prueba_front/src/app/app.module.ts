@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { ModalComponent } from './components/modal/modal.component';
-import { DetailsProductComponent } from './components/details-product/details-product.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 // Services
@@ -18,7 +17,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     AppComponent,
     LoginComponent,
     ModalComponent,
-    DetailsProductComponent,
     ListProductsComponent,
     NavbarComponent
   ],
