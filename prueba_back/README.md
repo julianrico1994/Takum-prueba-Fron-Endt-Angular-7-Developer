@@ -1,4 +1,7 @@
-# Prueba Takúm by Julian Garcia Rico ('Back-End' proyect)
+# Back: Takúm's test by Julian Garcia Rico
+
+
+This project was generated using [DJango](https://www.djangoproject.com/) and [DRF (Django Rest Framework)](https://www.django-rest-framework.org/)
 
 ## How to install
 
