@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService
   ) {}
 
-  private user = {
+  public user = {
     email: '',
     password: ''
   };
