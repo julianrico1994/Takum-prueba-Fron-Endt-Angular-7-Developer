@@ -5,6 +5,7 @@ import { ListProductsComponent } from 'src/app/components/list-products/list-pro
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
+  { path: 'user/login', component: LoginComponent },
   { path: 'list-products', component: ListProductsComponent },
 ];
 

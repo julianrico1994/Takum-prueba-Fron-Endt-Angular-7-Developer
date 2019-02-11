@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
-// import { Observable } from 'rxjs/internal/Observable';
-// import { forkJoin } from 'rxjs'; // RxJS 6 syntax
+import { ProductInterface } from '../models/product-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +12,7 @@ export class DataApiService {
     this.getCategories();
   }
 
-  public selectedProduct = {
+  public selectedProduct: ProductInterface = {
     id: null,
     name: '',
     description: '',
@@ -38,33 +37,32 @@ export class DataApiService {
 
   getAllProductsUser() {
     const user = this.authService.getToken();
-    console.log(`user: ${user}`);
     const URL_API = `http://127.0.0.1:8000/product/listGroupByCategoryByUser/${user}`;
     return this.http.get(URL_API);
   }
 
-  saveProduct(product) {
-    // TODO: obtener token
-    // TODO: not null
+  saveProduct(product: ProductInterface) {
     // const token = this.authService.getToken();
     const user = this.authService.getToken();
     product.user = user;
     const URL_API = `http://127.0.0.1:8000/product/create`;
-    return this.http.post(URL_API, product).pipe(map(data => data));
+    return this.http
+      .post<ProductInterface>(URL_API, product)
+      .pipe(map(data => data));
   }
 
-  updateProduct(product) {
-    console.log(product);
-    // TODO: obtener token
-    // TODO: not null
-    // const productId = product.productId;
+  updateProduct(product: ProductInterface) {
     // const token = this.authService.getToken();
     const URL_API = `http://127.0.0.1:8000/product/update/${product.productId}`;
-    return this.http.put(URL_API, product).pipe(map(data => data));
+    return this.http
+      .put<ProductInterface>(URL_API, product)
+      .pipe(map(data => data));
   }
 
   deleteProduct(id: string) {
     const URL_API = `http://127.0.0.1:8000/product/softDelete`;
-    return this.http.put(URL_API, { id }).pipe(map(data => data));
+    return this.http
+      .put<ProductInterface>(URL_API, { id })
+      .pipe(map(data => data));
   }
 }

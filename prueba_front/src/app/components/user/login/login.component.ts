@@ -10,8 +10,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  constructor(private dataApi: DataApiService, private router: Router, private authService: AuthService, ) { }
+  constructor(
+    private dataApi: DataApiService,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   private user = {
     email: '',
@@ -20,14 +23,11 @@ export class LoginComponent implements OnInit {
   public isError = false;
 
   ngOnInit() {
-    this.getAllBooks();
-  }
-
-  getAllBooks() {
-    this.dataApi.getAllProducts()
-      .subscribe(
-        (products) => console.log(products)
-      )
+    if (this.authService.getCurrentUser() === null) {
+      return;
+    } else {
+      this.router.navigate(['list-products']);
+    }
   }
 
   onLogin(form: NgForm) {
@@ -36,15 +36,15 @@ export class LoginComponent implements OnInit {
         .loginuser(this.user.email, this.user.password)
         .subscribe(
           data => {
-            console.log(data)
+            console.log(data);
             if (data.succes) {
               this.authService.setUser(data.name);
               this.authService.setToken(data.id);
               this.isError = false;
               this.router.navigate(['list-products']);
-              // location.reload();
+              location.reload();
             } else {
-              this.onIsError()
+              this.onIsError();
             }
           },
           error => this.onIsError()
@@ -60,5 +60,4 @@ export class LoginComponent implements OnInit {
       this.isError = false;
     }, 3000);
   }
-
 }

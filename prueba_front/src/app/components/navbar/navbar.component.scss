@@ -1,0 +1,4 @@
+a:not([href]):not([tabindex]) {
+    color: var(--light);
+    text-decoration: none;
+}

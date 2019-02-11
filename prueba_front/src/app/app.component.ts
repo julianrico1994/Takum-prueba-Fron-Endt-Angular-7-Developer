@@ -7,9 +7,5 @@ import { RouterModule, Router, NavigationEnd } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'prueba-julian';
-
-  constructor(private router: Router){
-
-  }
+  constructor(private router: Router) {}
 }

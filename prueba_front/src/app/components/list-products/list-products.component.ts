@@ -11,11 +11,9 @@ import { NgForm } from '@angular/forms';
 export class ListProductsComponent implements OnInit {
   constructor(public dataApiService: DataApiService) {}
   public products;
-  // public categories;
 
   ngOnInit() {
     this.getListProducts();
-    // this.getListCategories();
   }
 
   categoryFilter(idCategory) {
@@ -30,12 +28,6 @@ export class ListProductsComponent implements OnInit {
       .getAllProductsUser()
       .subscribe(products => (this.products = products));
   }
-
-  // getListCategories(): void {
-  //   this.dataApiService
-  //     .getCategories()
-  //     .subscribe(categories => (this.dataApiService.categories = categories));
-  // }
 
   onDeleteProduct(id: string): void {
     if (confirm('Are you sure to delete?')) {

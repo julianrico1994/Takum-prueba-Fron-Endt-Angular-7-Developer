@@ -1,1 +1,6 @@
-# prueba_Takum
+# Prueba Takúm by Julian Garcia Rico
+
+## Running the code
+
+See the respective `README.md` for each project.
+

@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Services
 import { DataApiService } from './services/data-api.service';
 import { ListProductsComponent } from './components/list-products/list-products.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ListProductsComponent } from './components/list-products/list-products.
     LoginComponent,
     ModalComponent,
     DetailsProductComponent,
-    ListProductsComponent
+    ListProductsComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

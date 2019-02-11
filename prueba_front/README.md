@@ -1,27 +1,35 @@
-# PruebaJulian
+# Prueba Takúm by Julian Garcia Rico ('Front-End' proyect)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
 
-## Development server
+## How to install
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+You can install all the packages for the **Front-End** of this project. To do so, from this directory execute:
+````
+npm install
+````
 
-## Code scaffolding
+## How to run this proyect
+to run execute the following comand
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+````
+ng serve --open
+````
 
-## Build
+The proyect is now running at [localhost:4200](http://localhost:4200)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## how to login 
 
-## Running unit tests
+Two types of users were created (TAKUM and INVITED), both with their respective roles, as was proposed in the definition of this test.
+below you can see the user, the password and the role for both users
+````
+User 1
+email: julian@gmail.com
+password: 123
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+User 2
+email: andres@gmail.com
+password: 123
+````
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### **Notice** that it is necessary to run the ***'Back-End (prueba_back)'*** so that the application can login
